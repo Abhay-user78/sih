@@ -1,0 +1,23 @@
+# Amplicast base theme.
+# The heavy visual identity (glass panels, glow, grid texture, fonts) is
+# injected at runtime from app/theme.py so it survives theme reloads; this
+# file only sets the primitives Streamlit itself renders with (background,
+# secondary surfaces, text, primary colour, font family).
+
+[theme]
+base = "dark"
+primaryColor = "#00E5C7"
+backgroundColor = "#070A11"
+secondaryBackgroundColor = "#0F1523"
+textColor = "#E3EBF5"
+font = "sans serif"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = true
