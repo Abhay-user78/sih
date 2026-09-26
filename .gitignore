@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+.env
+
+# Credentials
+.cdsapirc
+
+# Data / large local files
+data/raw/
+*.nc
+*.grib
+
+# Logs
+*.log
+
+# Runtime output that regenerates every scheduler cycle
+outputs/live_run_*/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
