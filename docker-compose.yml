@@ -1,0 +1,36 @@
+services:
+  api:
+    build: .
+    image: spatio-temporal:latest
+    container_name: cyc-api
+    command: uvicorn weather_pipeline.api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./data:/app/data
+      # Optional: CDS credentials for automated ERA5 downloads.
+      # Create ./cdsapirc on the host (url + key, see README) then uncomment:
+      # - ./cdsapirc:/app/.cdsapirc:ro
+    environment:
+      - HOME=/app
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    image: spatio-temporal:latest
+    container_name: cyc-dashboard
+    command: >
+      streamlit run app/dashboard.py
+      --server.address 0.0.0.0 --server.port 8501
+      --server.headless true --browser.gatherUsageStats false
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./data:/app/data
+    environment:
+      - HOME=/app
+    depends_on:
+      - api
+    restart: unless-stopped

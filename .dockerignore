@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+outputs/
+data/
+.git/
+.idea/
+.pytest_cache/
+*.log
+agent.txt
+ENVIRONMENT.md
+README.md
